@@ -23,7 +23,7 @@ public class DriverRadio {
     public static void main(String[] args) {
         
         //Creacion de las instancias
-        RadioMIPS radio = new RadioMIPS();
+        Radio radio = new Radio();
         Scanner scanner = new Scanner(System.in);
 
 
@@ -88,16 +88,16 @@ public class DriverRadio {
         //Ciclo que contiene las opciones de la radio
         while(radio.isON() == true){
 
-            System.out.println("\n\nQue desea realizar:");
-            System.out.println("1) Cambiar de Frecuencia");
-            System.out.println("2) Avanzar de emisora");
-            System.out.println("3) Guardar una emisora");
-            System.out.println("4) Seleccionar emisora guardada");
-            System.out.println("5) Apagar");
-
             //Ciclo con Try Catch para evitar errores
             boolean var = false;
             while(var == false){
+
+                System.out.println("\n\nQue desea realizar:");
+                System.out.println("1) Cambiar de Frecuencia");
+                System.out.println("2) Avanzar de emisora");
+                System.out.println("3) Guardar una emisora");
+                System.out.println("4) Seleccionar emisora guardada");
+                System.out.println("5) Apagar");
 
                 try {
                 
@@ -121,79 +121,17 @@ public class DriverRadio {
 
                     //Opcion que pide un numero del 1 al 12 y corre el metodo asignar
                     else if(opcion == 3){
-    
-                        int boton = 0;
-
-                        System.out.println("\nIngrese el boton que desea asignar (1 al 12):");
-
-                        //Ciclo con Try Catch para evitar errores
-                        boolean var2 = false;
-                        while(var2 == false){	
-
-                            try {
-                                    
-                                boton = scanner.nextInt();
-                                
-                                if(boton <= 12 && boton >= 1){
-
-                                    radio.asignar(boton);
-                                    var2 = true;
-                                
-                                }
-                                else{
-
-                                    System.out.println("Error, solo se permiten numeros del 1 al 12");
-
-                                }
-                                
-                            } catch (InputMismatchException e) {
-                                
-                                System.out.println("Error, Por favor ingrese numeros enteros: ");
-                                scanner.next();
-
-                            }
-                        }
-
-                        var = true;
+                        
+                        int num = 0;
+                        var = radio.asignar(num);
     
                     }
 
                     //Opcion que pide un numero del 1 al 12 y corre el metodo emisora
                     else if(opcion == 4){
                         
-                        System.out.println("Ingrese el numero del boton de la emisora que desea escuchar: ");
-
-                        //Ciclo con Try Catch para evitar errores
-                        boolean var2 = false;
-                        while(var2 == false){
-
-                            try {
-                                
-                                int boton = scanner.nextInt();
-
-                                if(boton >= 1 && boton <= 12){
-
-                                    radio.emisora(boton);
-                                    var2 = true;
-
-                                }
-                                else{
-
-                                    System.out.println("Error, boton no existente");
-
-                                }
-
-                            } catch (InputMismatchException e) {
-                                
-                                System.out.println("Error, Por favor ingrese numeros enteros: ");
-                                scanner.next();
-
-
-                            }
-                        }
-
-                        
-                        var = true;
+                        int num = 0;
+                        var = radio.emisora(num);
     
                     }
 

@@ -93,7 +93,39 @@ public class Radio implements RadioGeneral{
 	@Override
 	public boolean asignar(int num) {
 
-		System.out.println("\nIngrese la emisora de la frecuencia " + freq + " que desee guardar (Si la emisora tiene punto decimal escribela con coma: 89,7):");
+		int boton = 0;
+
+		System.out.println("Ingrese un numero del 1 al 12 para asignar el boton de la emisora: ");
+
+		boolean var = false;
+		while(var == false){	
+
+			try {
+					
+				boton = input.nextInt();
+				
+				if(boton <= 12 && boton >= 1){
+
+					var = true;
+				
+				}
+				else{
+
+					System.out.println("Error, solo se permiten numeros del 1 al 12");
+
+				}
+				
+			} catch (InputMismatchException e) {
+				
+				System.out.println("Error, Por favor ingrese numeros enteros: ");
+				input.next();
+
+			}
+		}
+
+		num =  boton;
+
+		System.out.println("\nIngrese la emisora de la frecuencia " + freq + " que desee guardar:");//Nota: Si no funciona el decimal con Punto escribirlo con Coma
 
 		//Ciclo con Try Catch para evitar errores
 		boolean var2 = false;
@@ -167,6 +199,41 @@ public class Radio implements RadioGeneral{
 	@Override
 	public boolean emisora(int num) {
 
+		int boton = 0;
+
+		System.out.println("Ingrese el numero del boton de la emisora que desea escuchar: ");
+
+		//Ciclo con Try Catch para evitar errores
+		boolean var = false;
+		while(var == false){
+
+			try {
+				
+				boton = input.nextInt();
+
+				if(boton >= 1 && boton <= 12){
+
+					
+					var = true;
+
+				}
+				else{
+
+					System.out.println("Error, boton no existente, ingrese otro boton:");
+
+				}
+
+			} catch (InputMismatchException e) {
+				
+				System.out.println("Error, Por favor ingrese numeros enteros: ");
+				input.next();
+
+
+			}
+		}
+
+		num = boton;
+
 		//Condicion para elegir la lista de la frecuencia
 		if(freq == "AM"){
 
@@ -181,6 +248,7 @@ public class Radio implements RadioGeneral{
 			else{
 	
 				System.out.println("Ese boton no esta asignado a ninguna emisora");
+				return false;
 	
 			}	
 
@@ -198,6 +266,7 @@ public class Radio implements RadioGeneral{
 			else{
 	
 				System.out.println("Ese boton no esta asignado a ninguna emisora");
+				return false;
 	
 			}	
 
